@@ -1,0 +1,40 @@
+﻿@model ClienteModelo
+
+@{
+    ViewData["Title"] = "Visão geral de clientes";
+}
+
+<div id="pagina-formulario">
+    <header>
+        <a role="button" class="btn btn-primary" asp-controller="Cliente" asp-action="Index">Voltar</a>
+    </header>
+
+    <form>
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="Nome">
+        </div>
+
+        <div class="mb-3">
+            <label for="CNPJ" class="form-label">CNPJ</label>
+            <input type="text" class="form-control" id="CNPJ">
+        </div>
+
+        <div class="mb-3">
+            <label for="Telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="Telefone">
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email">
+        </div>
+
+        <div class="mb-3">
+            <label for="Endereço" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="Endereço">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Criar</button>
+    </form>
+</div>
