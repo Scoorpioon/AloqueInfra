@@ -1,12 +1,18 @@
+using AloqueInfra.Models;
+using AloqueInfra.Repository;
+using Microsoft.EntityFrameworkCore;
+using SiteContatos.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DBContext>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-    options.UseSqlServer("Server=NomeUsuario;Database=DB_AloqueInfra;Integrated Security=SSPI;TrustServerCertificate=Yes");
+    options.UseSqlServer("Server=GABRIEL;Database=DB_AloqueInfra;Integrated Security=SSPI;TrustServerCertificate=Yes");
 });
+builder.Services.AddScoped<FuncoesGerais<ClienteModelo>, ClienteRepository>();
 
 var app = builder.Build();
 

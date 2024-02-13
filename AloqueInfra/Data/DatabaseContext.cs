@@ -10,7 +10,7 @@ namespace SiteContatos.Data
         {
         }
 
-        public DbSet<ClienteModelo> Contatos { get; set; }
+        public DbSet<ClienteModelo> Clientes { get; set; }
         public DbSet<AlocacaoModelo> Alocacoes { get; set; }
         public DbSet<RecursoModelo> Funcionario { get; set; }
     }

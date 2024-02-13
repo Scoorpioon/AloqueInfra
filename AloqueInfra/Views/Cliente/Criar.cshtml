@@ -9,31 +9,35 @@
         <a role="button" class="btn btn-primary" asp-controller="Cliente" asp-action="Index">Voltar</a>
     </header>
 
-    <form>
+    <form asp-controller="Cliente" asp-action="Criar" method="post">
         <div class="mb-3">
             <label for="Nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="Nome">
+            <input type="text" class="form-control" id="Nome" placeholder="Nome da empresa..." asp-for="clienteNome">
         </div>
 
         <div class="mb-3">
             <label for="CNPJ" class="form-label">CNPJ</label>
-            <input type="text" class="form-control" id="CNPJ">
+            <input type="text" class="form-control" id="CNPJ" placeholder="CNPJ da empresa..." asp-for="clienteCNPJ">
         </div>
 
         <div class="mb-3">
             <label for="Telefone" class="form-label">Telefone</label>
-            <input type="text" class="form-control" id="Telefone">
+            <input type="text" class="form-control" id="Telefone" placeholder="(99) 99999-9999" asp-for="clienteTelefone">
         </div>
 
         <div class="mb-3">
             <label for="Email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="Email">
+            <input type="email" class="form-control" id="Email" placeholder="empresa@email.com" asp-for="clienteEmail">
         </div>
 
         <div class="mb-3">
             <label for="Endereço" class="form-label">Endereço</label>
-            <input type="text" class="form-control" id="Endereço">
+            <input type="text" class="form-control" id="Endereço" placeholder="Endereço da empresa..." asp-for="clienteEndereco">
         </div>
+
+        <input type="hidden" asp-for="clienteEmDebito" value="false">
+        <input type="hidden" asp-for="Datacad" value="@DateTime.Now">
+        <input type="hidden" asp-for="Updatedat" value="@DateTime.Now">
 
         <button type="submit" class="btn btn-primary">Criar</button>
     </form>
