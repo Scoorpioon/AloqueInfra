@@ -3,6 +3,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddDbContext<DBContext>(options =>
+{
+    options.UseSqlServer("Server=NomeUsuario;Database=DB_AloqueInfra;Integrated Security=SSPI;TrustServerCertificate=Yes");
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

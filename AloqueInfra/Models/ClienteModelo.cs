@@ -4,21 +4,32 @@ namespace AloqueInfra.Models
 {
     public class ClienteModelo
     {
-        public int Id { get; set;}
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Por favor, digite o nome do cliente")]
-        public string Nome { get; set;}
+        [StringLength(60)]
+        public string clienteNome { get; set; }
 
         [Required(ErrorMessage = "O CNPJ do cliente é obrigatório.")]
-        public string CNPJ { get; set;}
+        [StringLength(14)]
+        public string clienteCNPJ { get; set; }
 
         [Required(ErrorMessage = "O telefone do cliente é essencial para contato.")]
-        public string Telefone { get; set;}
+        [StringLength(12)]
+        public string clienteTelefone { get; set; }
 
         [Required(ErrorMessage = "O e-mail do cliente é essencial para contato.")]
-        public string Email { get; set;}
+        [StringLength(60)]
+        public string clienteEmail { get; set; }
 
         [Required(ErrorMessage = "Por favor, digite o endereço do cliente")]
-        public string Endereço { get; set;}
+        [StringLength(100)]
+        public string clienteEndereco { get; set; }
+
+        public bool clienteEmDebito { get; set; }
+
+        public DateTime Datacad {  get; set; }
+
+        public DateTime Updatedat { get; set; }
     }
 }
