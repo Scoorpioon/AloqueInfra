@@ -1,47 +1,45 @@
-﻿@{
+﻿@model List<ClienteModelo>
+
+@{
+    ViewData["Title"] = "Clientes cadastrados";
 }
 
 <div id="ClienteIndex">
     <header>
-        <a role="button" class="btn btn-primary" asp-controller="Cliente" asp-action="Criar">Cadastrar cliente</a>
+        <a role="button" class="botaoCadastro" asp-controller="Cliente" asp-action="Criar">Cadastrar cliente</a>
     </header>
 
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <!-- <th scope="col">#</th> -->
                 <th scope="col">Nome</th>
                 <th scope="col">CNPJ</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
                 <th scope="col">Endereço</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Arthur Morgan</td>
-                <td>1337</td>
-                <th>(11) 1337</th>
-                <td>Arthur@email.com</td>
-                <td>Fodase</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Arthur Morgan</td>
-                <td>1337</td>
-                <th>(11) 1337</th>
-                <td>Arthur@email.com</td>
-                <td>Fodase</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Arthur Morgan</td>
-                <td>1337</td>
-                <th>(11) 1337</th>
-                <td>Arthur@email.com</td>
-                <td>Fodase</td>
-            </tr>
+                @if(Model.Count() > 0 && Model.Any())
+                {
+                    foreach(ClienteModelo cliente in Model)
+                    {
+                        <tr>
+                            <!-- <th scope="row">ID</th> -->
+                            <td>@cliente.clienteNome</td>
+                            <td>@cliente.clienteCNPJ</td>
+                            <td>@cliente.clienteTelefone</td>
+                            <td>@cliente.clienteEmail</td>
+                            <td>@cliente.clienteEndereco</td>
+                            <td>
+                                <a class="configColuna" asp-controller="Contato" asp-action="Editar">Editar</a>
+                                <a class="configColuna" asp-controller="Contato" asp-action="ApagarConf">Apagar</a>
+                            </td>
+                        </tr>
+                    }
+                }          
         </tbody>
     </table>
 </div>

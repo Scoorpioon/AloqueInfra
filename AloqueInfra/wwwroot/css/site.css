@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
 html {
   font-size: 14px;
 }
@@ -36,15 +43,52 @@ main {
   padding-left: 140px;
 }
 
+/* Conteúdo do cabeçalho */
 header {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 42px;
+    height: 38px;
     border-bottom: 1px solid #dbdbdb;
     margin-bottom: 30px;
     padding: 0 15px;
+    box-sizing: border-box;
 }
+
+header a {
+    transition: 220ms;
+    border-radius: 50px;
+    padding: 0 8px;
+}
+
+header a:hover {
+    color: inherit;
+    background-color: #f0f0f0;
+    /*border: 1px solid gray;*/
+    /* box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.botaoVoltar {
+    color: #808080;
+    font-weight: 200;
+    text-decoration: none;
+    border: 1px solid red;
+}
+
+.botaoCadastro::before {
+    content: " + ";
+    font-size: 1.3em;
+    color: rebeccapurple;
+}
+
+.botaoCadastro {
+    text-decoration: none;
+    font-size: 1.1em;
+    color: #363636;
+    margin-bottom: 10px;
+}
+
+/* ============== */
 
 #barra-lateral {
   border-top-right-radius: 12px;
@@ -102,4 +146,17 @@ ul {
 
 input[type=text], input[type=email] {
     width: 450px;
+}
+
+.configColuna {
+    transition: 250ms;
+    color: #919191;
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 12px;
+}
+
+.configColuna:hover {
+    color: black;
+    background-color: #e0e0e0;
 }

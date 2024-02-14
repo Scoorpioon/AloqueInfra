@@ -1,12 +1,12 @@
 ﻿@model ClienteModelo
 
 @{
-    ViewData["Title"] = "Visão geral de clientes";
+    ViewData["Title"] = "Cadastrar um cliente";
 }
 
 <div id="pagina-formulario">
     <header>
-        <a role="button" class="btn btn-primary" asp-controller="Cliente" asp-action="Index">Voltar</a>
+        <a role="button" class="botaoVoltar" asp-controller="Cliente" asp-action="Index"> &lt;- Voltar</a>
     </header>
 
     <form asp-controller="Cliente" asp-action="Criar" method="post">

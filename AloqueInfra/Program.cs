@@ -13,6 +13,8 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseSqlServer("Server=GABRIEL;Database=DB_AloqueInfra;Integrated Security=SSPI;TrustServerCertificate=Yes");
 });
 builder.Services.AddScoped<FuncoesGerais<ClienteModelo>, ClienteRepository>();
+// builder.Services.AddScoped<FuncoesGerais<RecursoModelo>, RecursoRepository>();
+// builder.Services.AddScoped<FuncoesGerais<AlocacaoModelo>, AlocacaoRepository>();
 
 var app = builder.Build();
 

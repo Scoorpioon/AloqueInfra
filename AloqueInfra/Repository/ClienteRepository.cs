@@ -17,5 +17,28 @@ namespace AloqueInfra.Repository
             _DatabaseContext.SaveChanges();
             return cliente;
         }
+
+        bool FuncoesGerais<ClienteModelo>.Apagar(ClienteModelo cliente)
+        {
+
+            _DatabaseContext.Clientes.Remove(cliente);
+            _DatabaseContext.SaveChanges();
+
+            return true;
+        }
+        ClienteModelo FuncoesGerais<ClienteModelo>.Editar(ClienteModelo cliente)
+        {
+            return cliente;
+        }
+
+        ClienteModelo FuncoesGerais<ClienteModelo>.BuscarPorID(int ID)
+        {
+            return _DatabaseContext.Clientes.FirstOrDefault(contato => contato.Id == ID);
+        }
+
+        List<ClienteModelo> FuncoesGerais<ClienteModelo>.BuscarTodos()
+        {
+            return _DatabaseContext.Clientes.ToList();
+        }
     }
 }

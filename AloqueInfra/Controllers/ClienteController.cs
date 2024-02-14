@@ -15,7 +15,8 @@ namespace AloqueInfra.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<ClienteModelo> todosClientes = _funcoesGerais.BuscarTodos();
+            return View(todosClientes);
         }
 
         public IActionResult Criar()

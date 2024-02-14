@@ -4,6 +4,11 @@ namespace AloqueInfra.Repository
 {
     public interface FuncoesGerais<Modelo>
     {
-        ClienteModelo Adicionar(Modelo cliente);
+        Modelo BuscarPorID(int ID);
+        List<Modelo> BuscarTodos();
+
+        Modelo Adicionar(Modelo cliente);
+        Modelo Editar(Modelo cliente);
+        bool Apagar(Modelo cliente);
     }
 }
