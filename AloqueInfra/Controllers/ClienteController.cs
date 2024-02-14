@@ -24,6 +24,14 @@ namespace AloqueInfra.Controllers
             return View();
         }
 
+        public IActionResult Deletar(int id)
+        {
+            Console.WriteLine(id);
+
+            _funcoesGerais.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult Criar(ClienteModelo cliente)
         {

@@ -34,12 +34,12 @@
                             <td>@cliente.clienteEmail</td>
                             <td>@cliente.clienteEndereco</td>
                             <td>
-                                <a class="configColuna" asp-controller="Contato" asp-action="Editar">Editar</a>
-                                <a class="configColuna" asp-controller="Contato" asp-action="ApagarConf">Apagar</a>
+                                <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="@cliente.Id">Editar</a>
+                                <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="@cliente.Id">Apagar</a>
                             </td>
                         </tr>
                     }
-                }          
+                }
         </tbody>
     </table>
 </div>
