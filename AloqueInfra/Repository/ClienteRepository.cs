@@ -17,10 +17,6 @@ namespace AloqueInfra.Repository
             _DatabaseContext.SaveChanges();
             return cliente;
         }
-        public ClienteModelo Editar(ClienteModelo cliente)
-        {
-            return cliente;
-        }
 
         public ClienteModelo BuscarPorID(int ID)
         {
@@ -42,6 +38,24 @@ namespace AloqueInfra.Repository
             _DatabaseContext.SaveChanges();
 
             return true;
+        }
+
+        public ClienteModelo Editar(ClienteModelo cliente)
+        {
+            ClienteModelo dadosOriginais = BuscarPorID(cliente.Id);
+
+            if (dadosOriginais == null) throw new Exception("Ocorreu algum erro ao tentar encontrar o contato.");
+
+            dadosOriginais.clienteNome = cliente.clienteNome;
+            dadosOriginais.clienteCNPJ = cliente.clienteCNPJ;
+            dadosOriginais.clienteEmail = cliente.clienteEmail;
+            dadosOriginais.clienteTelefone = cliente.clienteTelefone;
+            dadosOriginais.clienteEndereco = cliente.clienteEndereco;
+
+            _DatabaseContext.Clientes.Update(dadosOriginais);
+            _DatabaseContext.SaveChanges();
+
+            return dadosOriginais;
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model ClienteModelo
+
+@{
+    ViewData["Title"] = "Cadastrar um cliente";
+
+    string nome = Model.clienteNome; string CNPJ = Model.clienteCNPJ; 
+    string telefone = Model.clienteTelefone; string email = Model.clienteEmail;
+    string endereco = Model.clienteEndereco;
+}
+
+<div id="pagina-formulario">
+    <header>
+        <a role="button" class="botaoVoltar" asp-controller="Cliente" asp-action="Index"> &lt;- Voltar</a>
+    </header>
+
+    <form asp-controller="Cliente" asp-action="Editar" method="post">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="Nome" placeholder="Nome da empresa..." asp-for="clienteNome" value="@nome">
+        </div>
+
+        <div class="mb-3">
+            <label for="CNPJ" class="form-label">CNPJ</label>
+            <input type="text" class="form-control" id="CNPJ" placeholder="CNPJ da empresa..." asp-for="clienteCNPJ" value="@CNPJ">
+        </div>
+
+        <div class="mb-3">
+            <label for="Telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="Telefone" placeholder="(99) 99999-9999" asp-for="clienteTelefone" value="@telefone">
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="empresa@email.com" asp-for="clienteEmail" value="@email">
+        </div>
+
+        <div class="mb-3">
+            <label for="Endereço" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="Endereço" placeholder="Endereço da empresa..." asp-for="clienteEndereco" value="@endereco">
+        </div>
+
+        <div class="mb-3">
+            <label for="emDebito" class="form-label">Cliente está em débito?</label>
+            <select class="form-select w-2" style="width: 142px;" id="emDebito">
+                <option value="false">Não</option>
+                <option value="true">Sim</option>
+            </select>
+        </div>
+
+        <input type="hidden" asp-for="Datacad" value="@DateTime.Now">
+        <input type="hidden" asp-for="Updatedat" value="@DateTime.Now">
+
+        <button type="submit" class="btn btn-primary">Criar</button>
+    </form>
+</div>

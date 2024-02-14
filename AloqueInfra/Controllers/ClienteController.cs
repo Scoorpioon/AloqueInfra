@@ -26,16 +26,27 @@ namespace AloqueInfra.Controllers
 
         public IActionResult Deletar(int id)
         {
-            Console.WriteLine(id);
-
             _funcoesGerais.Apagar(id);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Editar(int id)
+        {
+            ClienteModelo cliente = _funcoesGerais.BuscarPorID(id);
+            return View(cliente);
         }
 
         [HttpPost]
         public IActionResult Criar(ClienteModelo cliente)
         {
             _funcoesGerais.Adicionar(cliente);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Editar(ClienteModelo cliente)
+        {
+            _funcoesGerais.Editar(cliente);
             return RedirectToAction("Index");
         }
     }
