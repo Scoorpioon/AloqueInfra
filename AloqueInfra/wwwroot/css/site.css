@@ -5,6 +5,11 @@
     text-decoration: none;
 }
 
+:root {
+    --cor-principal: #5c0099;
+    --cor-principal-claro: #8a00e6;
+}
+
 button {
     background: none;
     border: none;
@@ -101,8 +106,37 @@ header a:hover {
     margin-bottom: 10px;
 }
 
-/* ============== */
+header .alocacaoBuscarPor {
+    margin-bottom: 5px;
+    height: 30px;
+    width: 142px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border: 1px solid var(--cor-principal-claro);
+    background-color: var(--cor-principal-claro);
+    color: white;
+    font-weight: bold;
+    padding: 0;
+    padding-left: 15px;
+    cursor: pointer;
+}
 
+header .alocacaoBuscarPor {
+    cursor: pointer;
+}
+
+header .pesquisa {
+    display: flex;
+    position: absolute;
+    right: 32px;
+}
+
+.pesquisa .barraPesquisa {
+    position: static;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius:  0px;
+}
+/* ============== */
 #barra-lateral {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -166,7 +200,7 @@ ul {
     width: 88%;
 }
 
-form input[type=text], form input[type=email], form select {
+form input[type=text], form input[type=email], form input[type=date], form input[type=""number""] form select {
     width: 450px;
 }
 

@@ -1,0 +1,39 @@
+﻿@model List<RecursoModelo>
+
+@{
+    ViewData["Title"] = "Recursos cadastrados";
+}
+
+<div id="ClienteIndex">
+    <header>
+        <a role="button" class="botaoCadastro" asp-controller="Recurso" asp-action="Criar">Cadastrar recurso</a>
+        <input type="text" class="barraPesquisa" placeholder="Busque algum funcionário..." />
+    </header>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">RG</th>
+                <th scope="col">Tempo total alocado</th>
+                <th scope="col">Valor diário</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>
+                    <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="0">Editar</a>
+                    <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="0">Apagar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

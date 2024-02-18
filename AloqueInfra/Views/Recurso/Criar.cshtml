@@ -1,0 +1,43 @@
+﻿@model RecursoModelo
+
+@{
+    ViewData["Title"] = "Cadastrar um recurso";
+}
+
+<div id="pagina-formulario">
+    <header>
+        <a role="button" class="botaoVoltar" asp-controller="Recurso" asp-action="Index"> &lt;- Voltar</a>
+    </header>
+
+    <form asp-controller="Recurso" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="Nome" placeholder="Nome do funcionário...">
+        </div>
+
+        <div class="mb-3">
+            <label for="CPF" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="CPF" placeholder="999.999.999-99">
+        </div>
+
+        <div class="mb-3">
+            <label for="RG" class="form-label">RG</label>
+            <input type="text" class="form-control" id="RG" placeholder="99-999.999-9">
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="funcionário@email.com">
+        </div>
+
+        <div class="mb-3">
+            <label for="ValorDiario" class="form-label">Valor diário</label>
+            <input type="number" class="form-control" id="ValorDiario" placeholder="R$9999,99">
+        </div>
+
+        <!--<input type="hidden" asp-for="Datacad" value="@DateTime.Now">
+        <input type="hidden" asp-for="Updatedat" value="@DateTime.Now">-->
+
+        <button type="submit" class="btn btn-primary">Criar</button>
+    </form>
+</div>

@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const valorAlocacao = document.getElementById("ValorAlocacao");
+const valorFechado = document.getElementById("ValorFechado");
 
-// Write your JavaScript code.
+console.log(valorFechado);
+
+valorFechado.addEventListener('change', (acao) => {
+    console.log(acao);
+
+    opcaoSelecionada == true ? valorAlocacao.disabled = true : valorAlocacao.disabled = false;
+};

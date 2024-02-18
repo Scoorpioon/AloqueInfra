@@ -1,0 +1,48 @@
+﻿@model AlocacaoModelo
+@{
+    ViewData["Title"] = "Alocações agendadas";
+}
+
+<div id="ClienteIndex">
+    <header>
+        <a role="button" class="botaoCadastro" asp-controller="Alocacao" asp-action="Criar">Criar nova alocação</a>
+        <div class="pesquisa">
+            <input type="text" class="barraPesquisa" placeholder="Busque algum contato..." />
+            <select class="form-select alocacaoBuscarPor">
+                <option selected disabled>Buscar por...</option>
+                <option value="cliente">Cliente</option>
+                <option value="funcionario">Funcionário</option>
+            </select>
+        </div>
+    </header>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">Cliente</th>
+                <th scope="col">Funcionário</th>
+                <th scope="col">Data de alocação</th>
+                <th scope="col">Quantidade total de dias</th>
+                <th scope="col">Valor fechado</th>
+                <th scope="col">Valor total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!-- <th scope="row">ID</th> -->
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>
+                    <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="0">Editar</a>
+                    <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="0">Apagar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
