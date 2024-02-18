@@ -15,6 +15,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 builder.Services.AddScoped<FuncoesGerais<ClienteModelo>, ClienteRepository>();
 builder.Services.AddScoped<FuncoesGerais<RecursoModelo>, RecursoRepository>();
 builder.Services.AddScoped<FuncoesGerais<AlocacaoModelo>, AlocacaoRepository>();
+builder.Services.AddScoped<FuncoesGerais<UsuarioModelo>, UsuarioRepository>();
 
 var app = builder.Build();
 

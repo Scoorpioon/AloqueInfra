@@ -6,22 +6,32 @@
     <title>@ViewData["Title"] - AloqueInfra</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AloqueInfra.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <div id="barra-lateral">
-        <div>
-            <ul>
-                <li><a asp-controller="Home" asp-action="Index">Página inicial</a></li>
-            </ul>
-            <ul>
-                <li class="title">Tabelas</li>
-                <li><a asp-controller="Cliente" asp-action="Index">Clientes</a></li>
-                <li><a asp-controller="Recurso" asp-action="Index">Recursos</a></li>
-                <li><a asp-controller="Alocacao" asp-action="Index">Alocações</a></li>
-            </ul>
+    @if (ViewBag.menuLateral)
+    {
+        <div id="barra-lateral">
+            <div>
+                <ul>
+                    <li class="title" style="font-size: 0.8em">{UsuárioDebug}</li>
+                    <li><a asp-controller="Usuario" asp-action="Index">Página de login</a></li>
+                    <li><a asp-controller="Usuario" asp-action="Criar">Cadastrar usuário</a></li>
+                </ul>
+                <ul>
+                    <li class="title">Principal</li>
+                    <li><a asp-controller="Home" asp-action="Index">Página inicial</a></li>
+                </ul>
+                <ul>
+                    <li class="title">Tabelas</li>
+                    <li><a asp-controller="Cliente" asp-action="Index">Clientes</a></li>
+                    <li><a asp-controller="Recurso" asp-action="Index">Recursos</a></li>
+                    <li><a asp-controller="Alocacao" asp-action="Index">Alocações</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    }
     <div>
         <main role="main">
             @RenderBody()

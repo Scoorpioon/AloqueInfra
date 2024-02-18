@@ -1,0 +1,18 @@
+﻿#login {
+    width: 100%;
+    height: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+#login form {
+    display: flex;
+    position: absolute;
+    left: 26px;
+    top: 188px;
+    flex-direction: column;
+    padding: 16px;
+    width: 50%;
+    height: 50%;
+    box-shadow: 0 0 16px 0.5px rgba(0, 0, 0, 0.2);
+}

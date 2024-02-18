@@ -20,7 +20,7 @@ namespace AloqueInfra.Repository
 
         public ClienteModelo BuscarPorID(int ID)
         {
-            return _DatabaseContext.Clientes.FirstOrDefault(contato => contato.Id == ID);
+            return _DatabaseContext.Clientes.FirstOrDefault(cliente => cliente.Id == ID);
         }
 
         public List<ClienteModelo> BuscarTodos()

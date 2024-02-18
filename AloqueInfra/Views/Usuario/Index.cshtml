@@ -1,0 +1,28 @@
+﻿@model UsuarioModelo
+
+@{
+    ViewData["Title"] = "Fazer login";
+    ViewBag.menuLateral = false;
+}
+
+<div id="login">
+    <form asp-controller="Usuario" asp-action="Login" method="post">
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="Email" placeholder="Seu e-mail..." asp-for="usuarioEmail">
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="Senha" placeholder="Sua senha..." asp-for="usuarioSenha">
+            <a class="senhaEsquecida">Esqueci minha senha...</a>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Continuar conectado</label>
+            <input type="checkbox" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Fazer login</button>
+    </form>
+</div>

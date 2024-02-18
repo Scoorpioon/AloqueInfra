@@ -10,5 +10,14 @@ namespace AloqueInfra.Repository
         public Modelo Adicionar(Modelo cliente);
         public Modelo Editar(Modelo cliente);
         public bool Apagar(int ID);
+
+        /*void AtualizarDados(Modelo dadosOriginais, Modelo dadosNovos, string nomeIdentificador, List<string> campos)
+        {
+            for(int contador = 0;  contador < campos.Count; contador++)
+            {
+                dadosOriginais.$"{nomeIdentificador}{campos[contador]}" = nomeIdentificador.dadosNovos;
+            }
+        }*/
     }
 }
+
