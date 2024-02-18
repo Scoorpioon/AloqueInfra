@@ -1,0 +1,48 @@
+﻿@model RecursoModelo
+
+@{
+    ViewData["Title"] = "Editar um recurso";
+
+    string nome = Model.funcNome;
+    string CPF = Model.funcCPF;
+    string RG = Model.funcRG;
+    string email = Model.funcEmail;
+    decimal valorDiario = Model.funcValorDiario;
+}
+
+<div id="pagina-formulario">
+    <header>
+        <a role="button" class="botaoVoltar" asp-controller="Recurso" asp-action="Index"> &lt;- Voltar</a>
+    </header>
+
+    <form asp-controller="Recurso" asp-action="Editar" method="post">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="Nome" placeholder="Nome da empresa..." asp-for="funcNome" value="@nome">
+        </div>
+
+        <div class="mb-3">
+            <label for="CPF" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="CPF" placeholder="999.999.999-99" asp-for="funcCPF" value="@CPF">
+        </div>
+
+        <div class="mb-3">
+            <label for="RG" class="form-label">RG</label>
+            <input type="text" class="form-control" id="RG" placeholder="99.999.999-99" asp-for="funcRG" value="@RG">
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="funcionario@email.com" asp-for="funcEmail" value="@email">
+        </div>
+
+        <div class="mb-3">
+            <label for="ValorDiario" class="form-label">Valor diário</label>
+            <input type="text" class="form-control" id="ValorDiario" placeholder="ValorDiario da empresa..." asp-for="funcValorDiario" value="@valorDiario">
+        </div>
+
+        <!--<input type="hidden" asp-for="Updatedat" value="@DateTime.Now">-->
+
+        <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+</div>

@@ -1,7 +1,7 @@
 ﻿@model ClienteModelo
 
 @{
-    ViewData["Title"] = "Cadastrar um cliente";
+    ViewData["Title"] = "Editar um cliente";
 
     string nome = Model.clienteNome; 
     string CNPJ = Model.clienteCNPJ; 
@@ -49,7 +49,6 @@
             </select>
         </div>
 
-        <input type="hidden" asp-for="Datacad" value="@DateTime.Now">
         <input type="hidden" asp-for="Updatedat" value="@DateTime.Now">
 
         <button type="submit" class="btn btn-primary">Criar</button>

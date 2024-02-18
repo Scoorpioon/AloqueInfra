@@ -23,17 +23,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>
-                    <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="0">Editar</a>
-                    <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="0">Apagar</a>
-                </td>
-            </tr>
+            @if (Model.Count() > 0 && Model.Any())
+            {
+                foreach(RecursoModelo funcionario in Model)
+                {
+                    <tr>
+                        <!-- <th scope="row">ID</th> -->
+                        <td>@funcionario.funcNome</td>
+                        <td>@funcionario.funcCPF</td>
+                        <td>@funcionario.funcRG</td>
+                        <td>@funcionario.funcEmail</td>
+                        <td>@funcionario.funcValorDiario</td>
+                        <td>
+                            <a class="configColuna" asp-controller="Recurso" asp-action="Editar" asp-route-id="@funcionario.Id">Editar</a>
+                            <a class="configColuna" asp-controller="Recurso" asp-action="Deletar" asp-route-id="@funcionario.Id">Apagar</a>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>

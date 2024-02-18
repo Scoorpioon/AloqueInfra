@@ -40,20 +40,20 @@ namespace AloqueInfra.Repository
             return true;
         }
 
-        public RecursoModelo Editar(RecursoModelo cliente)
+        public RecursoModelo Editar(RecursoModelo funcionario)
         {
-            RecursoModelo dadosOriginais = BuscarPorID(cliente.Id);
+            RecursoModelo dadosOriginais = BuscarPorID(funcionario.Id);
 
             if (dadosOriginais == null) throw new Exception("Ocorreu algum erro ao tentar encontrar o contato.");
 
-            /*dadosOriginais.clienteNome = cliente.clienteNome;
-            dadosOriginais.clienteCNPJ = cliente.clienteCNPJ;
-            dadosOriginais.clienteEmail = cliente.clienteEmail;
-            dadosOriginais.clienteTelefone = cliente.clienteTelefone;
-            dadosOriginais.clienteEndereco = cliente.clienteEndereco;
+            dadosOriginais.funcNome = funcionario.funcNome;
+            dadosOriginais.funcCPF = funcionario.funcCPF;
+            dadosOriginais.funcRG = funcionario.funcRG;
+            dadosOriginais.funcEmail = funcionario.funcEmail;
+            dadosOriginais.funcValorDiario = funcionario.funcValorDiario;
 
-            _DatabaseContext.Clientes.Update(dadosOriginais);
-            _DatabaseContext.SaveChanges();*/
+            _DatabaseContext.Funcionario.Update(dadosOriginais);
+            _DatabaseContext.SaveChanges();
 
             return dadosOriginais;
         }
