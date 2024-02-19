@@ -8,13 +8,13 @@ namespace AloqueInfra.Controllers
     {
         FuncoesGerais<AlocacaoModelo> _funcoesAlocacao;
         FuncoesGerais<ClienteModelo> _funcoesClientes;
-        //FuncoesGerais<RecursoModelo> _funcoesRecurso;
+        FuncoesGerais<RecursoModelo> _funcoesRecursos;
 
-        public AlocacaoController(FuncoesGerais<AlocacaoModelo> funcoes, FuncoesGerais<ClienteModelo> clientes)
+        public AlocacaoController(FuncoesGerais<AlocacaoModelo> funcoes, FuncoesGerais<ClienteModelo> clientes, FuncoesGerais<RecursoModelo> recursos)
         {
             _funcoesAlocacao = funcoes;
             _funcoesClientes = clientes;
-            //_funcoesRecurso = recurso;
+            _funcoesRecursos = recursos;
         }
 
         public IActionResult Index()
@@ -27,14 +27,17 @@ namespace AloqueInfra.Controllers
         {
             AlocacaoModelo alocacao = new AlocacaoModelo();
 
-            var modelos = new ClienteRecursoAlocacaoVM
+            ViewBag.todosClientes = _funcoesClientes.BuscarTodos();
+            ViewBag.todosFuncionarios = _funcoesRecursos.BuscarTodos();
+
+            /*var modelos = new ClienteRecursoAlocacaoVM
             {
                 Alocacoes = alocacao,
                 Clientes = _funcoesClientes.BuscarTodos()
                 
-            };
+            }; */
 
-            return View(modelos);
+            return View();
         }
 
         public IActionResult Deletar(int id)

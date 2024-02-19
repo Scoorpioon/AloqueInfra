@@ -1,10 +1,8 @@
-﻿@model ClienteRecursoAlocacaoVM
+﻿@model AlocacaoModelo
 
 @{
     ViewData["Title"] = "Criar alocação";
     ViewBag.menuLateral = true;
-
-    Console.WriteLine(Model.Alocacoes.dataFim);
 }
 
 <div id="pagina-formulario">
@@ -15,8 +13,8 @@
     <form asp-controller="Alocacao" asp-action="Criar" method="post">
         <div class="mb-3">
             <label for="Cliente" class="form-label">Cliente</label>
-            <select id="Cliente" class="form-select" style="width: 250px;">
-                @foreach(ClienteModelo cliente in Model.Clientes)
+            <select id="Cliente" class="form-select" style="width: 450px;">
+                @foreach(ClienteModelo cliente in ViewBag.todosClientes)
                 {
                     <option value="@cliente.clienteCNPJ">@cliente.clienteNome</option>
                 }
@@ -26,25 +24,26 @@
         <div class="mb-3">
             <label for="Funcionario" class="form-label">Funcionário</label>
             <select id="Funcionario" class="form-select" style="width: 450px;">
-                <option>Teste 1</option>
-                <option>Teste 2</option>
-                <option>Teste 3</option>
+                @foreach(RecursoModelo funcionario in ViewBag.todosFuncionarios)
+                {
+                    <option value="@funcionario.funcCPF">@funcionario.funcNome</option>
+                }
             </select>
         </div>
 
         <div class="mb-3">
             <label for="DataInicial" class="form-label">Início da alocação</label>
-            <input type="date" class="form-control" id="DataInicial" style="width: 450px;" asp-for="@Model.Alocacoes.dataInicio" />
+            <input type="date" class="form-control" id="DataInicial" style="width: 450px;" asp-for="dataInicio" />
         </div>
 
         <div class="mb-3">
             <label for="DataFinal" class="form-label">Fim da alocação</label>
-            <input type="date" class="form-control" id="DataFinal" style="width: 450px;" asp-for="@Model.Alocacoes.dataFim" />
+            <input type="date" class="form-control" id="DataFinal" style="width: 450px;" asp-for="dataFim" />
         </div>
 
         <div class="mb-3">
             <label for="ValorFechado" class="form-label">O valor está fechado?</label>
-            <select id="ValorFechado" class="form-select" style="width: 450px;" asp-for="@Model.Alocacoes.valorFechado">
+            <select id="ValorFechado" class="form-select" style="width: 450px;" asp-for="valorFechado">
                 <option value="false">Não</option>
                 <option value="true">Sim</option>
             </select>
@@ -52,7 +51,7 @@
 
         <div class="mb-3">
             <label for="ValorAlocacao" class="form-label">Valor da alocação</label>
-            <input type="number" class="form-control" id="ValorAlocacao" min="0" max="5000" />
+            <input type="number" style="width: 450px;" class="form-control" id="ValorAlocacao" min="0" max="5000" asp-for="ValorAlocacao" />
         </div>
 
         <!--<input type="hidden" asp-for="Datacad" value="@DateTime.Now">

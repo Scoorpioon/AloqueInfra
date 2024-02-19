@@ -14,6 +14,7 @@
         <div class="mb-3">
             <label for="Nome" class="form-label">Nome</label>
             <input type="text" class="form-control" id="Nome" placeholder="Nome da empresa..." asp-for="clienteNome">
+            <span asp-validation-for="@Model.clienteNome"></span>
         </div>
 
         <div class="mb-3">
