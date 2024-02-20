@@ -216,3 +216,18 @@ form input[type=text], form input[type=email], form input[type=date], form input
     color: black;
     background-color: #e0e0e0;
 }
+
+/* Alocações */
+.caixaValores {
+    position: relative;
+}
+
+#ValorAlocacaoAutomatico {
+    position: absolute;
+    top: 32px;
+}
+
+#campoAutomatico {
+    position: absolute;
+    top: 0;
+}

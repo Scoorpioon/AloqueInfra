@@ -23,10 +23,10 @@
 
         <div class="mb-3">
             <label for="Funcionario" class="form-label">Funcionário</label>
-            <select id="Funcionario" class="form-select" style="width: 450px;">
+            <select id="Funcionario" name="Funcionario" class="form-select" style="width: 450px;">
                 @foreach(RecursoModelo funcionario in ViewBag.todosFuncionarios)
                 {
-                    <option value="@funcionario.funcCPF">@funcionario.funcNome</option>
+                    <option value="@funcionario.Id" data-valor="@funcionario.funcValorDiario">@funcionario.funcNome</option>
                 }
             </select>
         </div>
@@ -49,9 +49,12 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="ValorAlocacao" class="form-label">Valor da alocação</label>
+        <div class="mb-3 caixaValores">
+            <label id="campoPreencher" for="ValorAlocacao" class="form-label">Valor da alocação</label>
             <input type="number" style="width: 450px;" class="form-control" id="ValorAlocacao" min="0" max="5000" asp-for="ValorAlocacao" />
+
+            <label id="campoAutomatico" for="ValorAlocacaoAutomatico" class="form-label">Valor da alocação</label>
+            <input type="number" readonly style="width: 450px;" class="form-control" id="ValorAlocacaoAutomatico" min="0" max="5000" asp-for="ValorAlocacao" value="data-valordiario" />
         </div>
 
         <!--<input type="hidden" asp-for="Datacad" value="@DateTime.Now">
