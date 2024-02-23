@@ -14,6 +14,8 @@
         <div class="mb-3">
             <label for="Cliente" class="form-label">Cliente</label>
             <select id="Cliente" class="form-select" style="width: 450px;">
+                <option selected disabled>Selecione um funcionário...</option>
+
                 @foreach(ClienteModelo cliente in ViewBag.todosClientes)
                 {
                     <option value="@cliente.clienteCNPJ">@cliente.clienteNome</option>
@@ -24,6 +26,8 @@
         <div class="mb-3">
             <label for="Funcionario" class="form-label">Funcionário</label>
             <select id="Funcionario" name="Funcionario" class="form-select" style="width: 450px;">
+                <option selected disabled>Selecione um funcionário...</option>
+
                 @foreach(RecursoModelo funcionario in ViewBag.todosFuncionarios)
                 {
                     <option value="@funcionario.Id" data-valor="@funcionario.funcValorDiario">@funcionario.funcNome</option>
@@ -39,6 +43,11 @@
         <div class="mb-3">
             <label for="DataFinal" class="form-label">Fim da alocação</label>
             <input type="date" class="form-control" id="DataFinal" style="width: 450px;" asp-for="dataFim" />
+        </div>
+
+        <div class="mb-3">
+            <label for="QuantidadeDias" class="form-label">Quantidade total de dias:</label>
+            <input type="text" readonly class="form-control" id="QuantidadeDias" style="width: 450px;" />
         </div>
 
         <div class="mb-3">
