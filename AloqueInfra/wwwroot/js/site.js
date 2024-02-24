@@ -7,6 +7,7 @@ const selecaoFuncionario = document.getElementById("Funcionario");
 let dataInicial = document.getElementById("DataInicial");
 let dataFinal = document.getElementById("DataFinal");
 let campoDias = document.getElementById("QuantidadeDias");
+let erroAoSelecionar;
 
 valorAlocacaoAutomatico.style.visibility = "hidden", labelAutomatico.style.visibility = "hidden";
 valorAlocacaoAutomatico.disabled = true;
@@ -40,6 +41,8 @@ selecaoFuncionario.addEventListener('change', () => {
 });
 
 dataInicial.addEventListener('change', () => {
+    diferencaDeDatas('dataInicial');
+
     // pega a data completa e transforma em uma lista, no qual você pode selecionar o ano, mês e dia por index.
     let dataCompleta = dataInicial.value.split('-');
     //console.log(`Data completa: ${dataCompleta}`);
@@ -48,6 +51,10 @@ dataInicial.addEventListener('change', () => {
 });
 
 dataFinal.addEventListener('change', () => {
+    diferencaDeDatas('dataFinal');
+});
+
+const diferencaDeDatas = (campoAlterado) => {
     let dataInicialSplitada = dataInicial.value.split('-');
     let dataFinalSplitada = dataFinal.value.split('-');
     let anoInicial = Number(dataInicialSplitada[0]), anoFinal = Number(dataFinalSplitada[0]);
@@ -56,17 +63,48 @@ dataFinal.addEventListener('change', () => {
     let quantidadeDeDias = -1;
     let indiceFinal, indiceInicial;
 
-    if (dataInicial.value == "") {
-        console.log('DATA INICIAL NÃO PREENCHIDA');
-        dataInicial.style.border = "1px solid red";
-    } else {
+    if (erroAoSelecionar) {
         dataInicial.style.border = "1px solid #ced4da";
+        campoDias.value = "";
+        campoDias.style.color = 'black';
 
-        if (anoInicial > anoFinal || mesInicial > mesFinal && anoInicial == anoFinal || diaInicial > diaFinal && mesInicial == mesFinal && anoInicial == anoFinal ) {
+        erroAoSelecionar = false;
+    }
+
+    if (dataInicial.value == "") {
+        dataInicial.style.border = "1px solid red";
+
+        campoDias.value = "Data inválida";
+        campoDias.style.color = 'red';
+
+        console.log('DATA INICIAL NÃO PREENCHIDA');
+
+        erroAoSelecionar = true;
+
+    } else {
+        if (campoAlterado == 'dataFinal' & anoInicial > anoFinal || mesInicial > mesFinal && anoInicial == anoFinal || diaInicial > diaFinal && mesInicial == mesFinal && anoInicial == anoFinal) {
             dataInicial.style.border = "1px solid red";
-            console.log(`DATA INICIAL NÃO PODE SER ANTERIOR À FINAL`);
-        } else {
-            diaInicial > diaFinal ? indiceFinal = diaFinal : indiceFinal = diaInicial;
+
+            campoDias.value = "Data inválida";
+            campoDias.style.color = 'red';
+
+            console.log(`DATA FINAL NÃO PODE SER ANTERIOR À INICIAL`);
+
+
+            erroAoSelecionar = true;
+
+        } else if(campoAlterado == 'dataFinal' || campoAlterado == 'dataInicial'){
+
+            /*if(erroAoSelecionar) {
+                campoDias.value = "";
+                campoDias.style.color = 'black';
+
+                console.log('eu fui ativado!')
+
+                erroAoSelecionar = false;
+            }*/
+
+            diaInicial > diaFinal ? indiceFinal = diaInicial : indiceFinal = diaFinal;
             let quantidadeDeMeses = -1;
             let quantidadeDeAnos = -1;
 
@@ -82,22 +120,30 @@ dataFinal.addEventListener('change', () => {
 
             indiceFinal == diaInicial ? indiceInicial = diaFinal : indiceInicial = diaInicial;
 
-            for(let i = indiceInicial; i <= indiceFinal; i++) {
+            console.log(`Contagem será feita do número ${indiceInicial} até o ${indiceFinal}`);
+
+            for (let i = indiceInicial; i <= indiceFinal; i++) {
                 quantidadeDeDias += 1;
-                console.log("Número: " + quantidadeDeDias)
+                //console.log("Número: " + quantidadeDeDias)
 
                 if (i == diaFinal && mesFinal > mesInicial || i == diaFinal && anoFinal > anoInicial) {
-                    if(anoFinal > anoInicial) {
+                    if (anoFinal > anoInicial) {
                         quantidadeDeDias = quantidadeDeDias + (30 * quantidadeDeMeses + 365 * quantidadeDeAnos);
+                        campoDias.value = quantidadeDeDias;
+
                         console.log("Quantidade de dias final: " + quantidadeDeDias);
                         break;
                     }
 
                     quantidadeDeDias = quantidadeDeDias + (30 * quantidadeDeMeses);
+                    campoDias.value = quantidadeDeDias;
+
                     console.log("Quantidade de dias final: " + quantidadeDeDias);
                     break;
+                } else if(i == diaFinal){
+                    campoDias.value = quantidadeDeDias;
                 }
             }
         }
     }
-});
+}
