@@ -1,4 +1,4 @@
-﻿@model AlocacaoModelo
+﻿@model List<AlocacaoModelo>
 @{
     ViewData["Title"] = "Alocações agendadas";
     ViewBag.menuLateral = true;
@@ -31,19 +31,33 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            
                 <!-- <th scope="row">ID</th> -->
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>Teste</td>
-                <td>
-                    <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="0">Editar</a>
-                    <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="0">Apagar</a>
-                </td>
-            </tr>
+                @if(Model.Count() > 0 && Model.Any()) 
+                {
+                    foreach(AlocacaoModelo alocacao in Model)
+                    {
+                    <tr>
+                        <td>Nome do cliente</td>
+                        <td>Funcionário alocado</td>
+                        <td>@alocacao.dataInicio à @alocacao.dataFim</td>
+                        <td>Quantidade de dias</td>
+                        <td class="valorFechado">@alocacao.valorFechado</td>
+                        <td>R$@alocacao.ValorAlocacao</td>
+                        <td>
+                            <a class="configColuna" asp-controller="Cliente" asp-action="Editar" asp-route-id="@alocacao.Id">Editar</a>
+                            <a class="configColuna" asp-controller="Cliente" asp-action="Deletar" asp-route-id="@alocacao.Id">Apagar</a>
+                        </td>
+                    </tr>
+                    }
+                }
         </tbody>
     </table>
+    <script>
+        let valorFechadoTexto = document.getElementsByClassName('valorFechado');
+
+        for (let i = 0; i <= valorFechadoTexto.length; i++) {
+            valorFechadoTexto[i].innerHTML == 'True' ? valorFechadoTexto[i].innerHTML = 'Sim' : valorFechadoTexto[i].innerHTML = 'Não';
+        }
+    </script>
 </div>

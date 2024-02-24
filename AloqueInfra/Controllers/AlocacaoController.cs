@@ -19,23 +19,14 @@ namespace AloqueInfra.Controllers
 
         public IActionResult Index()
         {
-            // List<AlocacaoModelo> todasAlocacoes = _funcoesGerais.BuscarTodos();
-            return View();
+            List<AlocacaoModelo> todasAlocacoes = _funcoesAlocacao.BuscarTodos();
+            return View(todasAlocacoes);
         }
 
         public IActionResult Criar()
         {
-            AlocacaoModelo alocacao = new AlocacaoModelo();
-
             ViewBag.todosClientes = _funcoesClientes.BuscarTodos();
             ViewBag.todosFuncionarios = _funcoesRecursos.BuscarTodos();
-
-            /*var modelos = new ClienteRecursoAlocacaoVM
-            {
-                Alocacoes = alocacao,
-                Clientes = _funcoesClientes.BuscarTodos()
-                
-            }; */
 
             return View();
         }

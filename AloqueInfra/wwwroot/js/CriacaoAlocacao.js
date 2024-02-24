@@ -1,4 +1,5 @@
-﻿const valorAlocacao = document.getElementById("ValorAlocacao");
+﻿// Campos da página de criação das alocações
+const valorAlocacao = document.getElementById("ValorAlocacao");
 const valorFechado = document.getElementById("ValorFechado");
 const valorAlocacaoAutomatico = document.getElementById("ValorAlocacaoAutomatico");
 const labelPreencher = document.getElementById("campoPreencher");
@@ -8,6 +9,9 @@ let dataInicial = document.getElementById("DataInicial");
 let dataFinal = document.getElementById("DataFinal");
 let campoDias = document.getElementById("QuantidadeDias");
 let erroAoSelecionar;
+
+// Campos da página de exibição das alocações criadas
+let valorFechadoTexto = document.getElementsByClassName('valorFechado');
 
 valorAlocacaoAutomatico.style.visibility = "hidden", labelAutomatico.style.visibility = "hidden";
 valorAlocacaoAutomatico.disabled = true;
@@ -123,19 +127,20 @@ const diferencaDeDatas = (campoAlterado) => {
             console.log(`Contagem será feita do número ${indiceInicial} até o ${indiceFinal}`);
 
             for (let i = indiceInicial; i <= indiceFinal; i++) {
-                quantidadeDeDias += 1;
+                quantidadeDeDias++;
                 //console.log("Número: " + quantidadeDeDias)
 
-                if (i == diaFinal && mesFinal > mesInicial || i == diaFinal && anoFinal > anoInicial) {
+                if (i == indiceFinal && mesFinal > mesInicial || i == diaFinal && anoFinal > anoInicial) {
                     if (anoFinal > anoInicial) {
                         quantidadeDeDias = quantidadeDeDias + (30 * quantidadeDeMeses + 365 * quantidadeDeAnos);
                         campoDias.value = quantidadeDeDias;
 
-                        console.log("Quantidade de dias final: " + quantidadeDeDias);
                         break;
                     }
 
-                    quantidadeDeDias = quantidadeDeDias + (30 * quantidadeDeMeses);
+                    console.log('Quantidade de dias final:' + quantidadeDeDias);
+
+                    quantidadeDeDias = quantidadeDeDias + 30 * quantidadeDeMeses;
                     campoDias.value = quantidadeDeDias;
 
                     console.log("Quantidade de dias final: " + quantidadeDeDias);
