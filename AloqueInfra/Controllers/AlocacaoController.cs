@@ -39,8 +39,11 @@ namespace AloqueInfra.Controllers
 
         public IActionResult Editar(int id)
         {
-            // ClienteModelo alocacao = _funcoesGerais.BuscarPorID(id);
-            return View();
+            ViewBag.todosClientes = _funcoesClientes.BuscarTodos();
+            ViewBag.todosFuncionarios = _funcoesRecursos.BuscarTodos();
+
+            AlocacaoModelo alocacao = _funcoesAlocacao.BuscarPorID(id);
+            return View(alocacao);
         }
 
         [HttpPost]

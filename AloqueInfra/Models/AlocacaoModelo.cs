@@ -17,5 +17,7 @@ namespace AloqueInfra.Models
 
         [Required(ErrorMessage = "Insira a data final")]
         public DateTime dataFim { get; set; }
+
+        //public ICollection<ColaboradorModelo> Colaboradores {  get; set; }
     }
 }

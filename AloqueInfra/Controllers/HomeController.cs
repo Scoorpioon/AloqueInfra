@@ -18,6 +18,11 @@ namespace AloqueInfra.Controllers
             return View();
         }
 
+        public IActionResult VisaoGeral()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

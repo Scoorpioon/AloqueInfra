@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/AloqueInfra.styles.css" asp-append-version="true" />
 </head>
 <body>
-    @if (ViewBag.menuLateral)
+    @if(ViewBag.menuLateral)
     {
         <div id="barra-lateral">
             <div>
@@ -22,6 +22,10 @@
                 <ul>
                     <li class="title">Principal</li>
                     <li><a asp-controller="Home" asp-action="Index">Página inicial</a></li>
+                </ul>
+                <ul>
+                    <li class="title">Gráficos</li>
+                    <li><a asp-controller="Home" asp-action="VisaoGeral">Visão geral</a></li>
                 </ul>
                 <ul>
                     <li class="title">Tabelas</li>

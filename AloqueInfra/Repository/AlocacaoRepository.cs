@@ -44,20 +44,17 @@ namespace AloqueInfra.Repository
         {
             AlocacaoModelo dadosOriginais = BuscarPorID(alocacao.Id);
 
-            if (dadosOriginais == null) throw new Exception("Ocorreu algum erro ao tentar encontrar o contato.");
+            if (dadosOriginais == null) throw new Exception("Ocorreu algum erro ao tentar encontrar a alocação específica.");
 
-            /*dadosOriginais.clienteNome = alocacao.clienteNome;
-            dadosOriginais.clienteCNPJ = alocacao.clienteCNPJ;
-            dadosOriginais.clienteEmail = alocacao.clienteEmail;
-            dadosOriginais.clienteTelefone = alocacao.clienteTelefone;
-            dadosOriginais.clienteEndereco = alocacao.clienteEndereco;
+            dadosOriginais.dataInicio = alocacao.dataInicio;
+            dadosOriginais.dataFim = alocacao.dataFim;
+            dadosOriginais.valorFechado = alocacao.valorFechado;
+            dadosOriginais.ValorAlocacao = alocacao.ValorAlocacao;
 
-            _DatabaseContext.Clientes.Update(dadosOriginais);
+            _DatabaseContext.Alocacoes.Update(dadosOriginais);
             _DatabaseContext.SaveChanges();
 
-            return dadosOriginais; */
-
-            return dadosOriginais;
+            return dadosOriginais; 
         }
     }
 }

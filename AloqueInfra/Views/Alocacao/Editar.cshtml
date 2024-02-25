@@ -1,0 +1,81 @@
+﻿@model AlocacaoModelo
+
+@{
+    ViewData["Title"] = "Editar uma alocação";
+    ViewBag.menuLateral = true;
+
+    DateTime dataInicio = Model.dataInicio;
+    DateTime dataFim = Model.dataFim;
+    bool valorFechado = Model.valorFechado;
+    decimal valorAlocacao = Model.ValorAlocacao;
+}
+
+<div id="pagina-formulario">
+    <header>
+        <a role="button" class="botaoVoltar" asp-controller="Alocacao" asp-action="Index"> &lt;- Voltar</a>
+    </header>
+
+    <form asp-controller="Alocacao" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label for="Cliente" class="form-label">Cliente</label>
+            <select id="Cliente" class="form-select" style="width: 450px;">
+                <option selected disabled>Selecione um funcionário...</option>
+
+                @foreach (ClienteModelo cliente in ViewBag.todosClientes)
+                {
+                    <option value="@cliente.clienteCNPJ">@cliente.clienteNome</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="Funcionario" class="form-label">Funcionário</label>
+            <select id="Funcionario" name="Funcionario" class="form-select" style="width: 450px;">
+                <option selected disabled>Selecione um funcionário...</option>
+
+                @foreach (RecursoModelo funcionario in ViewBag.todosFuncionarios)
+                {
+                    <option value="@funcionario.Id" data-valor="@funcionario.funcValorDiario">@funcionario.funcNome</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="DataInicial" class="form-label">Início da alocação</label>
+            <input type="date" class="form-control" id="DataInicial" style="width: 450px;" asp-for="dataInicio" value="@dataInicio" />
+        </div>
+
+        <div class="mb-3">
+            <label for="DataFinal" class="form-label">Fim da alocação</label>
+            <input type="date" class="form-control" id="DataFinal" style="width: 450px;" asp-for="dataFim" value="@dataFim" />
+        </div>
+
+        <div class="mb-3">
+            <label for="QuantidadeDias" class="form-label">Quantidade total de dias:</label>
+            <input type="text" readonly class="form-control" id="QuantidadeDias" style="width: 450px;" />
+        </div>
+
+        <div class="mb-3">
+            <label for="ValorFechado" class="form-label">O valor está fechado?</label>
+            <select id="ValorFechado" class="form-select" style="width: 450px;" asp-for="valorFechado" value="@valorFechado">
+                <option value="false">Não</option>
+                <option value="true">Sim</option>
+            </select>
+        </div>
+
+        <div class="mb-3 caixaValores">
+            <label id="campoPreencher" for="ValorAlocacao" class="form-label">Valor da alocação</label>
+            <input type="number" style="width: 450px;" class="form-control" id="ValorAlocacao" min="0" max="5000" asp-for="ValorAlocacao" value="@valorAlocacao" />
+
+            <label id="campoAutomatico" for="ValorAlocacaoAutomatico" class="form-label">Valor da alocação</label>
+            <input type="number" readonly style="width: 450px;" class="form-control" id="ValorAlocacaoAutomatico" min="0" max="5000" asp-for="ValorAlocacao" value="data-valordiario" />
+        </div>
+
+        <!--<input type="hidden" asp-for="Datacad" value="@DateTime.Now">
+        <input type="hidden" asp-for="Updatedat" value="@DateTime.Now"> -->
+
+        <button type="submit" class="btn btn-primary">Cadastrar alocação</button>
+    </form>
+
+    <script src="~/js/CriacaoAlocacao.js"></script>
+</div>
